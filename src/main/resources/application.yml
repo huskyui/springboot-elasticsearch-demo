@@ -1,0 +1,13 @@
+elasticsearch:
+  url: 192.168.149.88:9200
+spring:
+  datasource:
+    driver-class-name: 'com.mysql.cj.jdbc.Driver'
+    url: jdbc:mysql://192.168.149.88:3306/employees?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456Aa!
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    org.apache.http: DEBUG

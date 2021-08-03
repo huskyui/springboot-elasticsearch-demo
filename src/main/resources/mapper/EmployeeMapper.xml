@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.elk.mapper.EmployeeMapper">
+
+    <resultMap id="baseMap" type="com.demo.elk.entity.Employee">
+        <id column="emp_no" property="empNo"/>
+        <result column="birth_date" property="birthDate"/>
+        <result column="first_name" property="firstName"/>
+        <result column="gender" property="gender"/>
+        <result column="hire_date" property="hireDate"/>
+    </resultMap>
+    <insert id="insertBatch">
+        insert into test_tbl(id,name) values 
+        <foreach collection="recordList" item="item" separator="," index="index">
+            (#{item.id},#{item.name})
+        </foreach>
+    </insert>
+
+    <select id="selectList" resultMap="baseMap">
+        select emp_no,birth_date,first_name,gender,hire_date from employees limit #{start},#{offset}
+    </select>
+</mapper>
